@@ -1,0 +1,51 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Exchange Calculator</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      Default Base currency is USD. <br> <br>
+      Prices may vary from Market to Market.
+    </ion-card-header>
+  </ion-card>
+  <ion-card>
+
+    <ion-card-content>
+
+      <ion-item>
+        <ion-label>Coin</ion-label>
+        <ion-select [(ngModel)]="coin">
+          <ion-option *ngFor="let c of coins" [value]="c">{{c.symbol}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Currency</ion-label>
+        <ion-select [(ngModel)]="currency">
+          <ion-option *ngFor="let curr of currencies" [value]="curr">{{curr}}</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-card-content>
+  </ion-card> 
+
+  <ion-card *ngIf ="coin" >
+    <ion-card-content>
+        <ion-item>
+          <ion-input type="text" [placeholder]='coin.symbol' [(ngModel)]="coinAmount" (keyup) ="changeCurrencyAmount()"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="currency">
+          <ion-input type="text" [(ngModel)]="curencyAmount" [placeholder]="currency" (keyup) ="changeCoinAmount()"></ion-input>
+        </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

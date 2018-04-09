@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Favoutites</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let k of key">
+    <ion-list no-lines>
+      <ion-item-sliding #slidingItem>
+        <ion-item #item>
+          <ion-avatar item-start>
+            <img src="https://www.cryptocompare.com{{favCoin[k].Img}}">
+          </ion-avatar>
+          <h2 class="white" text-center>{{k}} </h2>
+            <ion-icon  name="settings" item-right (click)="open(slidingItem, item)"></ion-icon>
+        </ion-item>
+        <ion-item-options icon-start>
+            <button ion-button expandable color="dark"  (click)="close(slidingItem,item)">
+                <ion-icon name="close"></ion-icon> 
+              </button>
+          <button ion-button expandable color="dark" (click)="gotoCoinDetailsPage(k)">
+            <ion-icon name="information-circle"></ion-icon> 
+          </button>
+          <button ion-button expandable  color="dark" (click)="delete(k)">
+            <ion-icon name="trash"></ion-icon>
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-card>
+</ion-content>

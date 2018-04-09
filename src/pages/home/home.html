@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>CrypTrace</ion-title>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar 
+  animated=true 
+  (ionInput)="getItems($event)" 
+  [(ngModel)]="searchQuery" 
+  (ionClear)="onCancel($event)" 
+  (ionCancel)="onCancel($event)">
+</ion-searchbar>
+  <ion-refresher color="primary" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-card *ngIf="searchQuery">
+    <ion-card-header>
+      <ion-list no-lines *ngIf="items.length > 0">
+        <ion-item class="hover" *ngFor="let item of items">
+          <ion-row (click)="coindetail( {id:item.id , img : item.ImageUrl})">
+            <ion-col text-left> {{ item.name }}</ion-col>
+            <ion-col text-right> {{ item.symbol }}</ion-col>
+          </ion-row>
+        </ion-item>
+      </ion-list>
+    </ion-card-header>
+  </ion-card>
+  <ion-card class="hover" *ngFor="let coin of coins" (click)="coindetail( {id:coin.id , img : coin.ImageUrl} )">
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="flex">
+              <img *ngIf="coin.ImageUrl" class="coinicon" src="https://www.cryptocompare.com{{coin.ImageUrl}}">
+              <h3 class="name">{{coin.symbol}}</h3>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="wt name" text-right>
+              ${{coin.price_usd}}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          {{coin.name}}
+        </ion-col>
+        <ion-col text-right [ngClass]="coin.percent_change_24h[0] === '-' ? 'red' : 'green'">
+          {{coin.percent_change_24h}}%
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+  <ion-fab bottom right>
+    <button ion-fab mini color="purpleButton" class="white" (click)="scrollToTop()">
+      <ion-icon text-center color="purpleButton" class="white" name="arrow-dropup"></ion-icon>
+    </button>
+  </ion-fab>
+</ion-content>

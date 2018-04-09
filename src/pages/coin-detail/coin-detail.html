@@ -1,0 +1,135 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+    <ion-title *ngIf="!title" [navPush]="HomePage">Please select a Coin</ion-title>
+    <ion-buttons end>
+      <button ion-button (click) ="goTOsettingsPage()">
+        <ion-icon class="size" name="settings"></ion-icon>
+      </button>
+      <button ion-button color="dark" text-right (click)="fullscreen(!state)">
+        <ion-icon class="size" name="expand"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content padding *ngIf="!title">
+  <br>
+  <br>
+  <button ion-button color="purpleButton" block (click)="home()">Choose a coin</button>
+</ion-content>
+
+<ion-content *ngIf="title">
+  <ion-card>
+    <ion-card-header>
+
+      <ion-row>
+        <ion-col text-left>
+          <div class="flex">
+            <img class="ic" [src]="img">
+            <h3 class="name">{{symbol}}</h3>
+          </div>
+        </ion-col>
+        <ion-col class="name" [ngClass]="{'green':flag == 1 , 'red':flag == 2}" text-right>${{price}}
+          <br>
+          <p [class]="changeClass">{{change}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row *ngIf="change24hr">
+        <ion-col text-left>Change in 24 Hour</ion-col>
+        <ion-col text-right>{{change24hr}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-left>Volume in 24 Hour</ion-col>
+        <ion-col text-right>{{volume}}</ion-col>
+      </ion-row>
+      <ion-row *ngIf="lastUpdate">
+        <ion-col text-left>Last Update</ion-col>
+        <ion-col text-right>{{lastUpdate}}</ion-col>
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="lastUpdate">
+      <ion-item>
+        <ion-label> Enable Real Time Charts</ion-label>
+        <ion-toggle color="purpleButton" [(ngModel)]="realTimeChartToggle" [checked]="realTimeChartToggle"></ion-toggle>
+      </ion-item>
+    </ion-card>
+
+  <ion-slides pager>
+
+
+    <ion-slide *ngIf="setting.chart.lineChart">
+
+      <canvas #lineCanvas></canvas>
+    </ion-slide>
+
+    <ion-slide *ngIf="setting.chart.candleChart">
+
+      <ion-card>
+        <ion-card-header text-center>
+          Candle Chart
+        </ion-card-header>
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+      </ion-card>
+    </ion-slide>
+
+  </ion-slides>
+
+  <ion-buttons>
+    <ion-row>
+      <ion-col text-center block (click)="getChartData('histominute')">
+        <button ion-button color="dark">Minute</button>
+      </ion-col>
+      <ion-col text-center block (click)="getChartData('histohour')">
+        <button ion-button color="dark">Hour</button>
+      </ion-col>
+      <ion-col text-center block (click)="getChartData('histoday')">
+        <button ion-button color="dark">Day</button>
+      </ion-col>
+    </ion-row>
+  </ion-buttons>
+
+  <ion-card *ngIf="Market.length > 0">
+    <ion-card-header>
+      Exchange Markets : {{title}} - USD
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngIf="Market.length < 1">
+    <ion-card-header>
+      <p>Market Currently Unavailable</p>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card *ngFor="let m of Market">
+    <ion-card-header>{{m.market}}</ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col text-left>Price</ion-col>
+        <ion-col text-right> ${{m.price}}</ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col text-left>Volume</ion-col>
+        <ion-col text-right>{{m.volume}}</ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+<ion-footer *ngIf="title">
+  <ion-toolbar *ngIf="!state">
+    <ion-row>
+      <ion-col (click)="AddToFavourites()">
+        <p text-center>
+          <ion-icon name="star"></ion-icon> Add To Favourites</p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

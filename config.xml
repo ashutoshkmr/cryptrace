@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="io.crypTrace.release" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CrypTrace</name>
+    <description>Cryptocurrency Tacker</description>
+    <author email="ashutoshkmr40@gmail.com" href="http://github.com/ashutosh7787">Ashutosh Kumar</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="ScrollEnabled" value="false" />
+    <preference name="android-minSdkVersion" value="16" />
+    <preference name="BackupWebStorage" value="none" />
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
+        <icon density="mdpi" src="resources/android/icon/drawable-mdpi-icon.png" />
+        <icon density="hdpi" src="resources/android/icon/drawable-hdpi-icon.png" />
+        <icon density="xhdpi" src="resources/android/icon/drawable-xhdpi-icon.png" />
+        <icon density="xxhdpi" src="resources/android/icon/drawable-xxhdpi-icon.png" />
+        <icon density="xxxhdpi" src="resources/android/icon/drawable-xxxhdpi-icon.png" />
+    </platform>
+    <plugin name="ionic-plugin-keyboard" spec="~2.2.1" />
+    <plugin name="cordova-plugin-whitelist" spec="1.3.1" />
+    <plugin name="cordova-plugin-device" spec="1.1.4" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.11" />
+    <plugin name="cordova-sqlite-storage" spec="^2.2.0" />
+    <plugin name="cordova-plugin-screen-orientation" spec="^3.0.1" />
+    <plugin name="cordova-plugin-admob-free" spec="^0.13.0" />
+    <allow-navigation href="http://192.168.0.102:8100" />
+    <engine name="android" spec="7.0.0" />
+</widget>

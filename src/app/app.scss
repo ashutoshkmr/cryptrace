@@ -1,0 +1,92 @@
+* {
+  color: #fff !important;
+  text-transform: capitalize;
+}
+.card-header{
+  color: #fff !important;
+}
+.white , ion-icon{
+  color: #fff !important;
+}
+.flex {
+  display: flex !important;
+}
+.red {
+  color: red !important;
+}
+.green {
+  color: rgb(11, 247, 11) !important;
+}
+.name {
+  margin: 10px;
+  margin-right: 0;
+}
+.hover:hover {
+  cursor: pointer !important;
+}
+.center {
+  text-align: center !important;
+}
+.coinicon {
+  width: 40px;
+  height: 40px;
+}
+.item-inner {
+  margin: 10px !important;
+  padding: 6px;
+}
+.list-md .item-block .item-inner {
+  border-bottom: 0 !important;
+  border: none !important;
+}
+.size {
+  font-size: 20px !important;
+  // margin-top: 2px !important;
+}
+.swiper-pagination-bullet {
+  background-color: #fff !important;
+}
+.swiper-pagination-bullet-active {
+  background: purple !important;
+  opacity: 1;
+}
+
+.menuIcon {
+  margin-right: 10px;
+}
+.canvasjs-chart-canvas {
+  width: 100% !important;
+}
+.alert-wrapper {
+  background-color: #222 !important;
+}
+.alert-radio-icon,
+.alert-md [aria-checked="true"] .alert-radio-icon,
+.alert-ios [aria-checked="true"] .alert-radio-icon,
+.alert-ios [aria-checked="true"] .alert-radio-inner {
+  border-color: purple !important;
+}
+.alert-md .alert-radio-inner {
+  background-color: purple !important;
+}
+
+.dark {
+  color: #222 !important;
+}
+.list-ios > .item-block:first-child,
+.list-md > .item-block:first-child,
+.list-ios > .item-block:last-child {
+  border: none !important;
+}
+
+#ion-diagnostics .ion-diagnostic-stack,
+#ion-diagnostics .ion-diagnostic-message {
+  color: #333333 !important;
+}
+.blackText{
+  color: #222 !important;
+}
+
+.slideFavItem{
+  transform: translate3d(-144px, 0px, 0px) !important;
+}

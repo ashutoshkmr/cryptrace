@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list no-lines>
+    <h2>Charts </h2>
+    <ion-item>
+      <ion-label> Line Chart</ion-label>
+      <ion-toggle [(ngModel)]="lineChart" color="purpleButton"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label> Candle Chart</ion-label>
+      <ion-toggle [(ngModel)]="candleChart" color="purpleButton"></ion-toggle>
+    </ion-item>
+    <ion-item>
+      <ion-label> Data Points </ion-label>
+      <ion-select [(ngModel)]="DataPoints">
+        <ion-option *ngFor="let num of [10, 20, 30, 40 , 50, 60]" color="dark" [value]="num">{{num}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <ion-list no-lines>
+    <h2>Market</h2>
+    <ion-item>
+      <ion-label>Choose Market</ion-label>
+      <ion-select [(ngModel)]="defaultMarket">
+        <ion-option *ngFor="let m of marketList" [value]="m">{{m}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-row>
+    <ion-col text-left>
+      <button text-center ion-button color="dark" block (click)="cancel()">cancel</button>
+    </ion-col>
+    <ion-col text-right>
+      <button text-center color="purpleButton" block ion-button (click)="updateSettings()"> Save</button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
